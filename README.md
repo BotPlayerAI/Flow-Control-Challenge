@@ -1,5 +1,6 @@
 ## Flow Control Challenge
 
+```java
 import java.util.Scanner;
 
 public class Counter {
