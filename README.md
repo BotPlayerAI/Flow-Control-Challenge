@@ -1,18 +1,34 @@
-## Getting Started
+## Flow Control Challenge
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+import java.util.Scanner;
 
-## Folder Structure
+public class Counter {
+  public static void main(String[] args) {
+    Scanner terminal = new Scanner(System.in);
 
-The workspace contains two folders by default, where:
+    System.out.println("Type the first parameter");
+    int firstParameter = terminal.nextInt();
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+    System.out.println("Type the second parameter");
+    int secondParameter = terminal.nextInt();
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+    try {
+      count(firstParameter, secondParameter);
+    } catch (InvalidParametersException exception) {
+      System.out.println(exception.getMessage());
+    }
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+    terminal.close();
+  }
 
-## Dependency Management
+  static void count(int firstParameter, int secondParameter) throws InvalidParametersException {
+    if (firstParameter > secondParameter) {
+      throw new InvalidParametersException("Second parameter need to be greater than the first parameter");
+    }
+    int counting = secondParameter - firstParameter;
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+    for (int i = 1; i <= counting; i++) {
+      System.out.println("Printing the number " + i);
+    }
+  }
+}
